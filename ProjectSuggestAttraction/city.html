@@ -1,0 +1,1472 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>ระบบแนะนำสถานที่ท่องเที่ยวในประเทศไทย</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+		<link href="css/headWed.css" rel="stylesheet">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+		<style>
+    		body{
+        	/*background-color: #c2c7b0;*/
+        	background-color: white;
+        	font-family: 'rsuregular';
+    		}
+			* {box-sizing: border-box}
+
+			/* Style the tab */
+			.tab {
+  				float: left;
+  				border: 1px solid #ccc;
+  				background-color: #b3cde0;
+  				width: 20%;
+  				height: 300px;
+				margin-top: 40px;
+				margin-left: -250px;
+			}
+
+			/* Style the buttons that are used to open the tab content */
+			.tab button {
+  				display: block;
+  				background-color: inherit;
+  				color: black;
+  				padding: 22px 16px;
+ 				width: 100%;
+  				border: none;
+  				outline: none;
+  				text-align: left;
+  				cursor: pointer;
+  				transition: 0.3s;
+			}
+
+			/* Change background color of buttons on hover */
+			.tab button:hover {
+  			background-color: #ddd;
+			}
+
+			/* Create an active/current "tab button" class */
+			.tab button.active {
+  			background-color: #ffff;
+			}
+
+			/* Style the tab content */
+			.tabcontent {
+  				float: left;
+ 				padding: 0px 12px;
+				/*border: 2px solid #b3cde0;
+				border-radius : 5px;
+				border-left: none;*/
+ 	 			width: 58%;
+  				/*height: 600px;*/
+				margin-top: 30px;
+				margin-left: 20px;
+			}
+			/* Dropdown Button */
+			.dropbtn {
+  				background-color: #6497b1;
+  				color: white;
+  				padding: 16px;
+  				font-size: 16px;
+ 				border: none;
+				border-radius : 3px;
+  				cursor: pointer;
+  				margin-top: 20px;
+  				margin-left: 400px;
+				width: 30%;
+			}
+
+			/* Dropdown button on hover & focus */
+			.dropbtn:hover, .dropbtn:focus {
+  				background-color:#b3cde0;
+			}
+
+			/* The container <div> - needed to position the dropdown content */
+			.dropdown {
+  				position: relative;
+  				display: inline-block;
+			}
+
+			/* Dropdown Content (Hidden by Default) */
+			.dropdown-content {
+  				display: none;
+  				position: absolute;
+  				background-color: #f6f6f6;
+  				min-width: 230px;
+  				border: 1px solid #ddd;
+  				z-index: 1;
+  				margin-left: 365px;
+  				margin-top: 5px;
+			}
+
+			/* Links inside the dropdown */
+			.dropdown-content a {
+  				color: black;
+  				padding: 12px 16px;
+  				text-decoration: none;
+  				display: block;
+			}
+
+			/* Change color of dropdown links on hover */
+			.dropdown-content a:hover {background-color: #f1f1f1}
+
+			/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+			.show {display:block;}
+
+			.button{
+				border : none;
+				border-radius : 3px;
+				background-color : #6497b1;
+				color : white;
+				padding: 8px 25px;
+  				text-align: center;
+  				text-decoration: none;
+  				display: inline-block;
+				cursor: pointer;
+				opacity: 0.9;
+				margin-left : 50px;
+                margin-top: 50px;
+			}
+			
+			/*search bar*/
+			.topnav .search-container {
+			float: l;
+			}
+
+			.topnav input[type=text] {
+			padding: 6px;
+			margin-top: 8px;
+			font-size: 17px;
+			border: none;
+			}
+
+			.topnav .search-container button {
+			float: right;
+			padding: 6px 10px;
+			margin-top: 8px;
+			margin-right: 16px;
+			background: #ddd;
+			font-size: 17px;
+			border: none;
+			cursor: pointer;
+			}
+
+			.topnav .search-container button:hover {
+			background: #ccc;
+			}
+
+			@media screen and (max-width: 600px) {
+			.topnav .search-container {
+				float: none;
+			}
+			.topnav a, .topnav input[type=text], .topnav .search-container button {
+				float: none;
+				display: block;
+				text-align: left;
+				width: 100%;
+				margin: 0;
+				padding: 14px;
+			}
+			.topnav input[type=text] {
+				border: 1px solid #ccc;  
+			}
+			}
+
+			form.example input[type=text] {
+				padding: 10px;
+				font-size: 17px;
+				border: none;
+				float: left;
+				width: 80%;
+				/*background: #f1f1f1;*/
+				margin-top : -55px;
+				margin-left : 100px;
+			}
+
+			form.example button {
+				float: left;
+				width: 20%;
+				/*padding: 10px;*/
+				background: #6497b1;
+				color: white;
+				font-size: 17px;
+				border: 1px solid #6497b1;
+				border-radius: 3px;
+				cursor: pointer;
+				margin-top : -50px;
+				margin-left : 120%;
+			}
+
+			form.example button:hover {
+				background: #b3cde0;
+			}
+
+			form.example::after {
+				content: "";
+				clear: both;
+				display: table;
+			}
+
+			/* colum news*/
+			/* Float four columns side by side */
+			.column {
+				float: left;
+				width: 25%;
+				padding: 0 10px;
+			}
+
+			/* Remove extra left and right margins, due to padding */
+			.row {margin: 0 -5px;}
+
+			/* Clear floats after the columns */
+			.row:after {
+				content: "";
+				display: table;
+				clear: both;
+			}
+
+			/* Responsive columns */
+			@media screen and (max-width: 600px) {
+			.column {
+				width: 100%;
+				display: block;
+				margin-bottom: 20px;
+			}
+			}
+
+			/* Style the counter cards */
+			.card {
+				box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+				border-radius : 3px;
+				border : 1px solid #ccc;
+				padding: 16px;
+				margin-bottom : 30px;
+				text-align: center;
+				background-color: #b3cde0;
+			}
+		</style>
+		  
+
+		<body style="background-color: #ffff;">
+    	<div id="h-menu">
+    		<div class="wrap">
+    			<div class="menu-left">
+    				<div>
+    					<a href="home.html" class="btn btn-menu active">
+    						<p>หน้าหลัก</p>
+    					</a>
+    				</div>
+					<form class="example" action="/action_page.php" style="margin:auto;max-width:300px">
+						<input type="text" placeholder="Search.." name="search2">
+						<button type="submit"><i class="fa fa-search"></i>ค้นหา</button>
+					</form>
+    			</div>
+    			<div class="menu-right">
+    				<div>
+    					<a href="login.html" class="btn btn-menu">
+    						<p>เข้าสู่ระบบ</p>
+    					</a>
+						<a href="regis.html" class="btn btn-menu">
+							<p>สมัครสมาชิก</p>
+						</a>
+    			</div>
+    		</div>
+		</div>
+
+	<div class="tab">
+		<button class="tablinks" onclick="openCity(event, 'กรุงเทพมหานคร')" id="defaultOpen">กรุงเทพมหานคร</button>
+		<button class="tablinks" onclick="openCity(event, 'กระบี่')">กระบี่</button>
+        <button class="tablinks" onclick="openCity(event, 'กาญจนบุรี')">กาญจนบุรี</button>
+		<button class="tablinks" onclick="openCity(event, 'กาฬสินธุ์')">กาฬสินธุ์</button>
+		<button class="tablinks" onclick="openCity(event, 'กำแพงเพชร')">กำแพงเพชร</button>
+        <button class="tablinks" onclick="openCity(event, 'ขอนแก่น')">ขอนแก่น</button>
+        <button class="tablinks" onclick="openCity(event, 'จันทบุรี')">จันทบุรี</button>
+        <button class="tablinks" onclick="openCity(event, 'ฉะเชิงเทรา')">ฉะเชิงเทรา</button>
+        <button class="tablinks" onclick="openCity(event, 'ชลบุรี')">ชลบุรี</button>
+        <button class="tablinks" onclick="openCity(event, 'ชัยนาท')">ชัยนาท</button>
+        <button class="tablinks" onclick="openCity(event, 'ชัยภูมิ')">ชัยภูมิ</button>
+        <button class="tablinks" onclick="openCity(event, 'ชุมพร')">ชุมพร</button>
+        <button class="tablinks" onclick="openCity(event, 'เชียงราย')">เชียงราย</button>
+        <button class="tablinks" onclick="openCity(event, 'เชียงใหม่')">เชียงใหม่</button>
+        <button class="tablinks" onclick="openCity(event, 'ตรัง')">ตรัง</button>
+        <button class="tablinks" onclick="openCity(event, 'ตราด')">ตราด</button>
+        <button class="tablinks" onclick="openCity(event, 'ตาก')">ตาก</button>
+        <button class="tablinks" onclick="openCity(event, 'นครนายก')">นครนายก</button>
+        <button class="tablinks" onclick="openCity(event, 'นครปฐม')">นครปฐม</button>
+        <button class="tablinks" onclick="openCity(event, 'นครพนม')">นครพนม</button>
+        <button class="tablinks" onclick="openCity(event, 'นครราชสีมา')">นครราชสีมา</button>
+        <button class="tablinks" onclick="openCity(event, 'นครศรีธรรมราช')">นครศรีธรรมราช</button>
+        <button class="tablinks" onclick="openCity(event, 'นครสวรรค์')">นครสวรรค์</button>
+        <button class="tablinks" onclick="openCity(event, 'นนทบุรี')">นนทบุรี</button>
+        <button class="tablinks" onclick="openCity(event, 'นราธิวาส')">นราธิวาส</button>
+        <button class="tablinks" onclick="openCity(event, 'น่าน')">น่าน</button>
+        <button class="tablinks" onclick="openCity(event, 'บึงกาฬ')">บึงกาฬ</button>
+        <button class="tablinks" onclick="openCity(event, 'บุรีรัมย์')">บุรีรัมย์</button>
+        <button class="tablinks" onclick="openCity(event, 'ปทุมธานี')">ปทุมธานี</button>
+		<button class="tablinks" onclick="openCity(event, 'ประจวบคีรีขันธ์')">ประจวบคีรีขันธ์</button>
+		<button class="tablinks" onclick="openCity(event, 'ปราจีนบุรี')">ปราจีนบุรี</button>
+        <button class="tablinks" onclick="openCity(event, 'ปัตตานี')">ปัตตานี</button>
+        <button class="tablinks" onclick="openCity(event, 'พระนครศรีอยุธยา')">พระนครศรีอยุธยา</button>
+        <button class="tablinks" onclick="openCity(event, 'พังงา')">พังงา</button>
+        <button class="tablinks" onclick="openCity(event, 'พัทลุง')">พัทลุง</button>
+        <button class="tablinks" onclick="openCity(event, 'พิจิตร')">พิจิตร</button>
+        <button class="tablinks" onclick="openCity(event, 'พิษนุโลก')">พิษนุโลก</button>
+        <button class="tablinks" onclick="openCity(event, 'เพชรบุรี')">เพชรบุรี</button>
+        <button class="tablinks" onclick="openCity(event, 'เพชรบูรณ์')">เพชรบูรณ์</button>
+        <button class="tablinks" onclick="openCity(event, 'แพร่')">แพร่</button>
+        <button class="tablinks" onclick="openCity(event, 'พะเยา')">พะเยา</button>
+        <button class="tablinks" onclick="openCity(event, 'ภูเก็ต')">ภูเก็ต</button>
+        <button class="tablinks" onclick="openCity(event, 'มหาสารคาม')">มหาสารคาม</button>
+        <button class="tablinks" onclick="openCity(event, 'มุกดาหาร')">มุกดาหาร</button>
+        <button class="tablinks" onclick="openCity(event, 'แม่ฮ่องสอน')">แม่ฮ่องสอน</button>
+        <button class="tablinks" onclick="openCity(event, 'ยะลา')">ยะลา</button>
+        <button class="tablinks" onclick="openCity(event, 'ยโสธร')">ยโสธร</button>
+        <button class="tablinks" onclick="openCity(event, 'ร้อยเอ็ด')">ร้อยเอ็ด</button>
+        <button class="tablinks" onclick="openCity(event, 'ระนอง')">ระนอง</button>
+        <button class="tablinks" onclick="openCity(event, 'ระยอง')">ระยอง</button>
+        <button class="tablinks" onclick="openCity(event, 'ราชบุรี')">ราชบุรี</button>
+        <button class="tablinks" onclick="openCity(event, 'ลพบุรี')">ลพบุรี</button>
+        <button class="tablinks" onclick="openCity(event, 'ลำปาง')">ลำปาง</button>
+        <button class="tablinks" onclick="openCity(event, 'ลำพูน')">ลำพูน</button>
+        <button class="tablinks" onclick="openCity(event, 'เลย')">เลย</button>
+        <button class="tablinks" onclick="openCity(event, 'ศรีษะเกษ')">ศรีษะเกษ</button>
+        <button class="tablinks" onclick="openCity(event, 'สกลนคร')">สกลนคร</button>
+        <button class="tablinks" onclick="openCity(event, 'สงขลา')">สงขลา</button>
+        <button class="tablinks" onclick="openCity(event, 'สตูล')">สตูล</button>
+        <button class="tablinks" onclick="openCity(event, 'สมุทรปราการ')">สมุทรปราการ</button>
+        <button class="tablinks" onclick="openCity(event, 'สมุทรสงคราม')">สมุทรสงคราม</button>
+        <button class="tablinks" onclick="openCity(event, 'สมุทรสาคร')">สมุทรสาคร</button>
+        <button class="tablinks" onclick="openCity(event, 'สระแก้ว')">สระแก้ว</button>
+		<button class="tablinks" onclick="openCity(event, 'สระบุรี')">สระบุรี</button>
+        <button class="tablinks" onclick="openCity(event, 'สิงห์บุรี')">สิงห์บุรี</button>
+        <button class="tablinks" onclick="openCity(event, 'สุโขทัย')">สุโขทัย</button>
+        <button class="tablinks" onclick="openCity(event, 'สุพรรณบุรี')">สุพรรณบุรี</button>
+        <button class="tablinks" onclick="openCity(event, 'สุราษฏร์ธานี')">สุราษฏร์ธานี</button>
+        <button class="tablinks" onclick="openCity(event, 'สุรินทร์')">สุรินทร์</button>
+        <button class="tablinks" onclick="openCity(event, 'หนองคาย')">หนองคาย</button>
+        <button class="tablinks" onclick="openCity(event, 'หนองบัวลำภู')">หนองบัวลำภู</button>
+        <button class="tablinks" onclick="openCity(event, 'อ่างทอง')">อ่างทอง</button>
+        <button class="tablinks" onclick="openCity(event, 'อุดรธานี')">อุดรธานี</button>
+        <button class="tablinks" onclick="openCity(event, 'อุทัยธานี')">อุทัยธานี</button>
+        <button class="tablinks" onclick="openCity(event, 'อุตรดิตถ์')">อุตรดิตถ์</button>
+		<button class="tablinks" onclick="openCity(event, 'อุบลราชธานี')">อุบลราชธานี</button>
+        <button class="tablinks" onclick="openCity(event, 'อำนาจเจริญ')">อำนาจเจริญ</button>
+	</div>
+	  
+	<div id= "กรุงเทพมหานคร" class="tabcontent">
+		<h2>สถานที่ท่องเที่ยวแนะนำในกรุงเทพมหานคร</h2>
+		<div class="row">
+			<div class="column">
+				<div class="card">
+					<h3>Card 1</h3>
+					<p>Some text</p>
+					<p>Some text</p>
+				</div>
+			</div>
+			<button  class="button" onclick="window.location.href = 'detail.html'">ดูรายละเอียด</button>
+		</div>	
+	</div>
+
+	<div id= "กระบี่" class="tabcontent">
+		<h2>สถานที่ท่องเที่ยวแนะนำในกระบี่</h2>
+		<div class="row">
+			<div class="column">
+				<div class="card">
+					<h3>Card 1</h3>
+					<p>Some text</p>
+					<p>Some text</p>
+				</div>
+			</div>
+			<button formaction="" class="button">ดูรายละเอียด</button>
+		</div>
+	</div>
+
+	<div id= "กาญจนบุรี" class="tabcontent">
+		<h2>สถานที่ท่องเที่ยวแนะนำในกาญจนบุรี</h2>
+		<div class="row">
+			<div class="column">
+				<div class="card">
+					<h3>Card 1</h3>
+					<p>Some text</p>
+					<p>Some text</p>
+				</div>
+			</div>
+			<button formaction="" class="button">ดูรายละเอียด</button>
+		</div>
+	</div>
+
+	<div id= "กาฬสินธุ์" class="tabcontent">
+		<h2>สถานที่ท่องเที่ยวแนะนำในกาฬสินธุ์</h2>
+		<div class="row">
+			<div class="column">
+				<div class="card">
+					<h3>Card 1</h3>
+					<p>Some text</p>
+					<p>Some text</p>
+				</div>
+			</div>
+			<button formaction="" class="button">ดูรายละเอียด</button>
+		</div>
+	</div>
+
+	<div id= "กำแพงเพชร" class="tabcontent">
+		<h2>สถานที่ท่องเที่ยวแนะนำในกำแพงเพชร</h2>
+		<div class="row">
+			<div class="column">
+				<div class="card">
+					<h3>Card 1</h3>
+					<p>Some text</p>
+					<p>Some text</p>
+				</div>
+			</div>
+			<button formaction="" class="button">ดูรายละเอียด</button>
+		</div>
+	</div>
+
+	<div id= "ขอนแก่น" class="tabcontent">
+		<h2>สถานที่ท่องเที่ยวแนะนำในขอนแก่น</h2>
+		<div class="row">
+			<div class="column">
+				<div class="card">
+					<h3>Card 1</h3>
+					<p>Some text</p>
+					<p>Some text</p>
+				</div>
+			</div>
+			<button formaction="" class="button">ดูรายละเอียด</button>
+		</div>
+	</div>
+
+	<div id= "จันทบุรี" class="tabcontent">
+		<h2>สถานที่ท่องเที่ยวแนะนำในจันบุรี</h2>
+		<div class="row">
+			<div class="column">
+				<div class="card">
+					<h3>Card 1</h3>
+					<p>Some text</p>
+					<p>Some text</p>
+				</div>
+			</div>
+			<button formaction="" class="button">ดูรายละเอียด</button>
+		</div>
+		
+	</div>
+
+	<div id= "ฉะเชิงเทรา" class="tabcontent">
+		<h2>สถานที่ท่องเที่ยวแนะนำในฉะเชิงเทรา</h2>
+		<div class="row">
+			<div class="column">
+				<div class="card">
+					<h3>Card 1</h3>
+					<p>Some text</p>
+					<p>Some text</p>
+				</div>
+			</div>
+			<button formaction="" class="button">ดูรายละเอียด</button>
+		</div>
+	</div>
+
+	<div id= "ชลบุรี" class="tabcontent">
+		<h2>สถานที่ท่องเที่ยวแนะนำในชลบุรี</h2>
+		<div class="row">
+			<div class="column">
+				<div class="card">
+					<h3>Card 1</h3>
+					<p>Some text</p>
+					<p>Some text</p>
+				</div>
+			</div>
+			<button formaction="" class="button">ดูรายละเอียด</button>
+		</div>
+	</div>
+	
+	<div id= "ชัยนาท" class="tabcontent">
+		<h2>สถานที่ท่องเที่ยวแนะนำในชัยนาท</h2>
+		<div class="row">
+			<div class="column">
+				<div class="card">
+					<h3>Card 1</h3>
+					<p>Some text</p>
+					<p>Some text</p>
+				</div>
+			</div>
+			<button formaction="" class="button">ดูรายละเอียด</button>
+		</div>
+	</div>
+
+	<div id= "ชัยภูมิ" class="tabcontent">
+		<h2>สถานที่ท่องเที่ยวแนะนำในชัยภูมิ</h2>
+		<div class="row">
+			<div class="column">
+				<div class="card">
+					<h3>Card 1</h3>
+					<p>Some text</p>
+					<p>Some text</p>
+				</div>
+			</div>
+			<button formaction="" class="button">ดูรายละเอียด</button>
+		</div>
+	</div>
+
+	<div id= "ชุมพร" class="tabcontent">
+		<h2>สถานที่ท่องเที่ยวแนะนำในชุมพร</h2>
+		<div class="row">
+			<div class="column">
+				<div class="card">
+					<h3>Card 1</h3>
+					<p>Some text</p>
+					<p>Some text</p>
+				</div>
+			</div>
+			<button formaction="" class="button">ดูรายละเอียด</button>
+		</div>
+	</div>
+
+	<div id= "เชียงราย" class="tabcontent">
+		<h2>สถานที่ท่องเที่ยวแนะนำในเชียงราย</h2>
+		<div class="row">
+			<div class="column">
+				<div class="card">
+					<h3>Card 1</h3>
+					<p>Some text</p>
+					<p>Some text</p>
+				</div>
+			</div>
+			<button formaction="" class="button">ดูรายละเอียด</button>
+		</div>
+	</div>
+
+	<div id= "เชียงใหม่" class="tabcontent">
+		<h2>สถานที่ท่องเที่ยวแนะนำในเชียงใหม่</h2>
+		<div class="row">
+			<div class="column">
+				<div class="card">
+					<h3>Card 1</h3>
+					<p>Some text</p>
+					<p>Some text</p>
+				</div>
+			</div>
+			<button formaction="" class="button">ดูรายละเอียด</button>
+		</div>
+	</div>
+
+	<div id= "ตรัง" class="tabcontent">
+		<h2>สถานที่ท่องเที่ยวแนะนำในตรัง</h2>
+		<div class="row">
+			<div class="column">
+				<div class="card">
+					<h3>Card 1</h3>
+					<p>Some text</p>
+					<p>Some text</p>
+				</div>
+			</div>
+			<button formaction="" class="button">ดูรายละเอียด</button>
+		</div>
+	</div>
+
+	<div id= "ตราด" class="tabcontent">
+		<h2>สถานที่ท่องเที่ยวแนะนำในตราด</h2>
+		<div class="row">
+			<div class="column">
+				<div class="card">
+					<h3>Card 1</h3>
+					<p>Some text</p>
+					<p>Some text</p>
+				</div>
+			</div>
+			<button formaction="" class="button">ดูรายละเอียด</button>
+		</div>
+	</div>
+	
+	<div id= "ตาก" class="tabcontent">
+		<h2>สถานที่ท่องเที่ยวแนะนำในตาก</h2>
+		<div class="row">
+			<div class="column">
+				<div class="card">
+					<h3>Card 1</h3>
+					<p>Some text</p>
+					<p>Some text</p>
+				</div>
+			</div>
+			<button formaction="" class="button">ดูรายละเอียด</button>
+		</div>
+	</div>
+
+	<div id= "นครนายก" class="tabcontent">
+		<h2>สถานที่ท่องเที่ยวแนะนำในนครนายก</h2>
+		<div class="row">
+			<div class="column">
+				<div class="card">
+					<h3>Card 1</h3>
+					<p>Some text</p>
+					<p>Some text</p>
+				</div>
+			</div>
+			<button formaction="" class="button">ดูรายละเอียด</button>
+		</div>
+	</div>
+
+	<div id= "นครปฐม" class="tabcontent">
+		<h2>สถานที่ท่องเที่ยวแนะนำในนครปฐม</h2>
+		<div class="row">
+			<div class="column">
+				<div class="card">
+					<h3>Card 1</h3>
+					<p>Some text</p>
+					<p>Some text</p>
+				</div>
+			</div>
+			<button formaction="" class="button">ดูรายละเอียด</button>
+		</div>
+	</div>
+
+	<div id= "นครพนม" class="tabcontent">
+		<h2>สถานที่ท่องเที่ยวแนะนำในนครพนม</h2>
+		<div class="row">
+			<div class="column">
+				<div class="card">
+					<h3>Card 1</h3>
+					<p>Some text</p>
+					<p>Some text</p>
+				</div>
+			</div>
+			<button formaction="" class="button">ดูรายละเอียด</button>
+		</div>
+	</div>
+
+	<div id= "นครราชสีมา" class="tabcontent">
+		<h2>สถานที่ท่องเที่ยวแนะนำในนครราชสีมา</h2>
+		<div class="row">
+			<div class="column">
+				<div class="card">
+					<h3>Card 1</h3>
+					<p>Some text</p>
+					<p>Some text</p>
+				</div>
+			</div>
+			<button formaction="" class="button">ดูรายละเอียด</button>
+		</div>
+	</div>
+
+	<div id= "นครศรีธรรมราช" class="tabcontent">
+		<h2>สถานที่ท่องเที่ยวแนะนำในนครศรีธรรมราช</h2>
+		<div class="row">
+			<div class="column">
+				<div class="card">
+					<h3>Card 1</h3>
+					<p>Some text</p>
+					<p>Some text</p>
+				</div>
+			</div>
+			<button formaction="" class="button">ดูรายละเอียด</button>
+		</div>
+	</div>
+
+	<div id= "นครสวรรค์" class="tabcontent">
+		<h2>สถานที่ท่องเที่ยวแนะนำในนครสวรรค์</h2>
+		<div class="row">
+			<div class="column">
+				<div class="card">
+					<h3>Card 1</h3>
+					<p>Some text</p>
+					<p>Some text</p>
+				</div>
+			</div>
+			<button formaction="" class="button">ดูรายละเอียด</button>
+		</div>
+	</div>
+
+	<div id= "นนทบุรี" class="tabcontent">
+		<h2>สถานที่ท่องเที่ยวแนะนำในนนทบุรี</h2>
+		<div class="row">
+			<div class="column">
+				<div class="card">
+					<h3>Card 1</h3>
+					<p>Some text</p>
+					<p>Some text</p>
+				</div>
+			</div>
+			<button formaction="" class="button">ดูรายละเอียด</button>
+		</div>
+	</div>
+
+	<div id= "นราธิวาส" class="tabcontent">
+		<h2>สถานที่ท่องเที่ยวแนะนำในนราธิวาส</h2>
+		<div class="row">
+			<div class="column">
+				<div class="card">
+					<h3>Card 1</h3>
+					<p>Some text</p>
+					<p>Some text</p>
+				</div>
+			</div>
+			<button formaction="" class="button">ดูรายละเอียด</button>
+		</div>
+	</div>
+
+	<div id= "น่าน" class="tabcontent">
+		<h2>สถานที่ท่องเที่ยวแนะนำในน่าน</h2>
+		<div class="row">
+			<div class="column">
+				<div class="card">
+					<h3>Card 1</h3>
+					<p>Some text</p>
+					<p>Some text</p>
+				</div>
+			</div>
+			<button formaction="" class="button">ดูรายละเอียด</button>
+		</div>
+	</div>
+
+	<div id= "บึงกาฬ" class="tabcontent">
+		<h2>สถานที่ท่องเที่ยวแนะนำในบึงกาฬ</h2>
+		<div class="row">
+			<div class="column">
+				<div class="card">
+					<h3>Card 1</h3>
+					<p>Some text</p>
+					<p>Some text</p>
+				</div>
+			</div>
+			<button formaction="" class="button">ดูรายละเอียด</button>
+		</div>
+	</div>
+
+	<div id= "บุรีรัมย์" class="tabcontent">
+		<h2>สถานที่ท่องเที่ยวแนะนำในบุรีรัมย์</h2>
+		<div class="row">
+			<div class="column">
+				<div class="card">
+					<h3>Card 1</h3>
+					<p>Some text</p>
+					<p>Some text</p>
+				</div>
+			</div>
+			<button formaction="" class="button">ดูรายละเอียด</button>
+		</div>
+	</div>
+
+	<div id= "ปทุมธานี" class="tabcontent">
+		<h2>สถานที่ท่องเที่ยวแนะนำในปทุมธานี</h2>
+		<div class="row">
+			<div class="column">
+				<div class="card">
+					<h3>Card 1</h3>
+					<p>Some text</p>
+					<p>Some text</p>
+				</div>
+			</div>
+			<button formaction="" class="button">ดูรายละเอียด</button>
+		</div>
+	</div>
+
+	<div id= "ประจวบคีรีขันธ์" class="tabcontent">
+		<h2>สถานที่ท่องเที่ยวแนะนำในประจวบคีรีขันธ์</h2>
+		<div class="row">
+			<div class="column">
+				<div class="card">
+					<h3>Card 1</h3>
+					<p>Some text</p>
+					<p>Some text</p>
+				</div>
+			</div>
+			<button formaction="" class="button">ดูรายละเอียด</button>
+		</div>
+	</div>
+
+	<div id= "ปราจีนบุรี" class="tabcontent">
+		<h2>สถานที่ท่องเที่ยวแนะนำในปราจีนบุรี</h2>
+		<div class="row">
+			<div class="column">
+				<div class="card">
+					<h3>Card 1</h3>
+					<p>Some text</p>
+					<p>Some text</p>
+				</div>
+			</div>
+			<button formaction="" class="button">ดูรายละเอียด</button>
+		</div>
+	</div>
+
+	<div id= "ปัตตานี" class="tabcontent">
+		<h2>สถานที่ท่องเที่ยวแนะนำในปัตตานี</h2>
+		<div class="row">
+			<div class="column">
+				<div class="card">
+					<h3>Card 1</h3>
+					<p>Some text</p>
+					<p>Some text</p>
+				</div>
+			</div>
+			<button formaction="" class="button">ดูรายละเอียด</button>
+		</div>
+	</div>
+
+	<div id= "พระนครศรีอยุธยา" class="tabcontent">
+		<h2>สถานที่ท่องเที่ยวแนะนำในพระนครศรีอยุธยา</h2>
+		<div class="row">
+			<div class="column">
+				<div class="card">
+					<h3>Card 1</h3>
+					<p>Some text</p>
+					<p>Some text</p>
+				</div>
+			</div>
+			<button formaction="" class="button">ดูรายละเอียด</button>
+		</div>
+	</div>
+
+	<div id= "พะเยา" class="tabcontent">
+		<h2>สถานที่ท่องเที่ยวแนะนำในพะเยา</h2>
+		<div class="row">
+			<div class="column">
+				<div class="card">
+					<h3>Card 1</h3>
+					<p>Some text</p>
+					<p>Some text</p>
+				</div>
+			</div>
+			<button formaction="" class="button">ดูรายละเอียด</button>
+		</div>
+	</div>
+
+	<div id= "พังงา" class="tabcontent">
+		<h2>สถานที่ท่องเที่ยวแนะนำในพังงา</h2>
+		<div class="row">
+			<div class="column">
+				<div class="card">
+					<h3>Card 1</h3>
+					<p>Some text</p>
+					<p>Some text</p>
+				</div>
+			</div>
+			<button formaction="" class="button">ดูรายละเอียด</button>
+		</div>
+	</div>
+
+	<div id= "พัทลุง" class="tabcontent">
+		<h2>สถานที่ท่องเที่ยวแนะนำในพัทลุง</h2>
+		<div class="row">
+			<div class="column">
+				<div class="card">
+					<h3>Card 1</h3>
+					<p>Some text</p>
+					<p>Some text</p>
+				</div>
+			</div>
+			<button formaction="" class="button">ดูรายละเอียด</button>
+		</div>
+	</div>
+
+	<div id= "พิจิตร" class="tabcontent">
+		<h2>สถานที่ท่องเที่ยวแนะนำในพิจิตร</h2>
+		<div class="row">
+			<div class="column">
+				<div class="card">
+					<h3>Card 1</h3>
+					<p>Some text</p>
+					<p>Some text</p>
+				</div>
+			</div>
+			<button formaction="" class="button">ดูรายละเอียด</button>
+		</div>
+	</div>
+
+	<div id= "พิษนุโลก" class="tabcontent">
+		<h2>สถานที่ท่องเที่ยวแนะนำในพิษณุโลก</h2>
+		<div class="row">
+			<div class="column">
+				<div class="card">
+					<h3>Card 1</h3>
+					<p>Some text</p>
+					<p>Some text</p>
+				</div>
+			</div>
+			<button formaction="" class="button">ดูรายละเอียด</button>
+		</div>
+	</div>
+
+	<div id= "เพชรบุรี" class="tabcontent">
+		<h2>สถานที่ท่องเที่ยวแนะนำในเพชรบุรี</h2>
+		<div class="row">
+			<div class="column">
+				<div class="card">
+					<h3>Card 1</h3>
+					<p>Some text</p>
+					<p>Some text</p>
+				</div>
+			</div>
+			<button formaction="" class="button">ดูรายละเอียด</button>
+		</div>
+	</div>
+
+	<div id= "เพชรบูรณ์" class="tabcontent">
+		<h2>สถานที่ท่องเที่ยวแนะนำในเพชรบูรณ์</h2>
+		<div class="row">
+			<div class="column">
+				<div class="card">
+					<h3>Card 1</h3>
+					<p>Some text</p>
+					<p>Some text</p>
+				</div>
+			</div>
+			<button formaction="" class="button">ดูรายละเอียด</button>
+		</div>
+	</div>
+
+	<div id= "แพร่" class="tabcontent">
+		<h2>สถานที่ท่องเที่ยวแนะนำในแพร่</h2>
+		<div class="row">
+			<div class="column">
+				<div class="card">
+					<h3>Card 1</h3>
+					<p>Some text</p>
+					<p>Some text</p>
+				</div>
+			</div>
+			<button formaction="" class="button">ดูรายละเอียด</button>
+		</div>
+	</div>
+
+	<div id= "ภูเก็ต" class="tabcontent">
+		<h2>สถานที่ท่องเที่ยวแนะนำในภูเก็ต</h2>
+		<div class="row">
+			<div class="column">
+				<div class="card">
+					<h3>Card 1</h3>
+					<p>Some text</p>
+					<p>Some text</p>
+				</div>
+			</div>
+			<button formaction="" class="button">ดูรายละเอียด</button>
+		</div>
+	</div>
+
+	<div id= "มหาสารคาม" class="tabcontent">
+		<h2>สถานที่ท่องเที่ยวแนะนำในมหาสารคาม</h2>
+		<div class="row">
+			<div class="column">
+				<div class="card">
+					<h3>Card 1</h3>
+					<p>Some text</p>
+					<p>Some text</p>
+				</div>
+			</div>
+			<button formaction="" class="button">ดูรายละเอียด</button>
+		</div>
+	</div>
+
+	<div id= "แม่ฮ่องสอน" class="tabcontent">
+		<h2>สถานที่ท่องเที่ยวแนะนำในแม่ฮ่องสอน</h2>
+		<div class="row">
+			<div class="column">
+				<div class="card">
+					<h3>Card 1</h3>
+					<p>Some text</p>
+					<p>Some text</p>
+				</div>
+			</div>
+			<button formaction="" class="button">ดูรายละเอียด</button>
+		</div>
+	</div>
+
+	<div id= "มุกดาหาร" class="tabcontent">
+		<h2>สถานที่ท่องเที่ยวแนะนำในมุกดาหาร</h2>
+		<div class="row">
+			<div class="column">
+				<div class="card">
+					<h3>Card 1</h3>
+					<p>Some text</p>
+					<p>Some text</p>
+				</div>
+			</div>
+			<button formaction="" class="button">ดูรายละเอียด</button>
+		</div>
+	</div>
+
+	<div id= "ยะลา" class="tabcontent">
+		<h2>สถานที่ท่องเที่ยวแนะนำในยโสธร</h2>
+		<div class="row">
+			<div class="column">
+				<div class="card">
+					<h3>Card 1</h3>
+					<p>Some text</p>
+					<p>Some text</p>
+				</div>
+			</div>
+			<button formaction="" class="button">ดูรายละเอียด</button>
+		</div>
+	</div>
+
+	<div id= "ยโสธร" class="tabcontent">
+		<h2>สถานที่ท่องเที่ยวแนะนำในยโสธร</h2>
+		<div class="row">
+			<div class="column">
+				<div class="card">
+					<h3>Card 1</h3>
+					<p>Some text</p>
+					<p>Some text</p>
+				</div>
+			</div>
+			<button formaction="" class="button">ดูรายละเอียด</button>
+		</div>
+	</div>
+
+	<div id= "ร้อยเอ็ด" class="tabcontent">
+		<h2>สถานที่ท่องเที่ยวแนะนำในร้อยเอ็ด</h2>
+		<div class="row">
+			<div class="column">
+				<div class="card">
+					<h3>Card 1</h3>
+					<p>Some text</p>
+					<p>Some text</p>
+				</div>
+			</div>
+			<button formaction="" class="button">ดูรายละเอียด</button>
+		</div>
+	</div>
+
+	<div id= "ระนอง" class="tabcontent">
+		<h2>สถานที่ท่องเที่ยวแนะนำในระนอง</h2>
+		<div class="row">
+			<div class="column">
+				<div class="card">
+					<h3>Card 1</h3>
+					<p>Some text</p>
+					<p>Some text</p>
+				</div>
+			</div>
+			<button formaction="" class="button">ดูรายละเอียด</button>
+		</div>
+	</div>
+
+	<div id= "ระยอง" class="tabcontent">
+		<h2>สถานที่ท่องเที่ยวแนะนำในระยอง</h2>
+		<div class="row">
+			<div class="column">
+				<div class="card">
+					<h3>Card 1</h3>
+					<p>Some text</p>
+					<p>Some text</p>
+				</div>
+			</div>
+			<button formaction="" class="button">ดูรายละเอียด</button>
+		</div>
+	</div>
+
+	<div id= "ราชบุรี" class="tabcontent">
+		<h2>สถานที่ท่องเที่ยวแนะนำในราชบุรี</h2>
+		<div class="row">
+			<div class="column">
+				<div class="card">
+					<h3>Card 1</h3>
+					<p>Some text</p>
+					<p>Some text</p>
+				</div>
+			</div>
+			<button formaction="" class="button">ดูรายละเอียด</button>
+		</div>
+	</div>
+
+	<div id= "ลพบุรี" class="tabcontent">
+		<h2>สถานที่ท่องเที่ยวแนะนำในลพบุรี</h2>
+		<div class="row">
+			<div class="column">
+				<div class="card">
+					<h3>Card 1</h3>
+					<p>Some text</p>
+					<p>Some text</p>
+				</div>
+			</div>
+			<button formaction="" class="button">ดูรายละเอียด</button>
+		</div>
+	</div>
+
+	<div id= "ลำปาง" class="tabcontent">
+		<h2>สถานที่ท่องเที่ยวแนะนำในลำปาง</h2>
+		<div class="row">
+			<div class="column">
+				<div class="card">
+					<h3>Card 1</h3>
+					<p>Some text</p>
+					<p>Some text</p>
+				</div>
+			</div>
+			<button formaction="" class="button">ดูรายละเอียด</button>
+		</div>
+	</div>
+
+	<div id= "ลำพูน" class="tabcontent">
+		<h2>สถานที่ท่องเที่ยวแนะนำในลำพูน</h2>
+		<div class="row">
+			<div class="column">
+				<div class="card">
+					<h3>Card 1</h3>
+					<p>Some text</p>
+					<p>Some text</p>
+				</div>
+			</div>
+			<button formaction="" class="button">ดูรายละเอียด</button>
+		</div>
+	</div>
+
+	<div id= "เลย" class="tabcontent">
+		<h2>สถานที่ท่องเที่ยวแนะนำในเลย</h2>
+		<div class="row">
+			<div class="column">
+				<div class="card">
+					<h3>Card 1</h3>
+					<p>Some text</p>
+					<p>Some text</p>
+				</div>
+			</div>
+			<button formaction="" class="button">ดูรายละเอียด</button>
+		</div>
+	</div>
+
+	<div id= "ศรีษะเกษ" class="tabcontent">
+		<h2>สถานที่ท่องเที่ยวแนะนำในศรีษะเกษ</h2>
+		<div class="row">
+			<div class="column">
+				<div class="card">
+					<h3>Card 1</h3>
+					<p>Some text</p>
+					<p>Some text</p>
+				</div>
+			</div>
+			<button formaction="" class="button">ดูรายละเอียด</button>
+		</div>
+	</div>
+
+	<div id= "สกลนคร" class="tabcontent">
+		<h2>สถานที่ท่องเที่ยวแนะนำในสกลนคร</h2>
+		<div class="row">
+			<div class="column">
+				<div class="card">
+					<h3>Card 1</h3>
+					<p>Some text</p>
+					<p>Some text</p>
+				</div>
+			</div>
+			<button formaction="" class="button">ดูรายละเอียด</button>
+		</div>
+	</div>
+
+	<div id= "สงขลา" class="tabcontent">
+		<h2>สถานที่ท่องเที่ยวแนะนำในสงขลา</h2>
+		<div class="row">
+			<div class="column">
+				<div class="card">
+					<h3>Card 1</h3>
+					<p>Some text</p>
+					<p>Some text</p>
+				</div>
+			</div>
+			<button formaction="" class="button">ดูรายละเอียด</button>
+		</div>
+	</div>
+
+	<div id= "สตูล" class="tabcontent">
+		<h2>สถานที่ท่องเที่ยวแนะนำในสตูล</h2>
+		<div class="row">
+			<div class="column">
+				<div class="card">
+					<h3>Card 1</h3>
+					<p>Some text</p>
+					<p>Some text</p>
+				</div>
+			</div>
+			<button formaction="" class="button">ดูรายละเอียด</button>
+		</div>
+	</div>
+
+	<div id= "สมุทรปราการ" class="tabcontent">
+		<h2>สถานที่ท่องเที่ยวแนะนำในสมุทรปราการ</h2>
+		<div class="row">
+			<div class="column">
+				<div class="card">
+					<h3>Card 1</h3>
+					<p>Some text</p>
+					<p>Some text</p>
+				</div>
+			</div>
+			<button formaction="" class="button">ดูรายละเอียด</button>
+		</div>
+	</div>
+
+	<div id= "สมุทรสงคราม" class="tabcontent">
+		<h2>สถานที่ท่องเที่ยวแนะนำในสมุทรสงคราม</h2>
+		<div class="row">
+			<div class="column">
+				<div class="card">
+					<h3>Card 1</h3>
+					<p>Some text</p>
+					<p>Some text</p>
+				</div>
+			</div>
+			<button formaction="" class="button">ดูรายละเอียด</button>
+		</div>
+	</div>
+
+	<div id= "สมุทรสาคร" class="tabcontent">
+		<h2>สถานที่ท่องเที่ยวแนะนำในสมุทรสาคร</h2>
+		<div class="row">
+			<div class="column">
+				<div class="card">
+					<h3>Card 1</h3>
+					<p>Some text</p>
+					<p>Some text</p>
+				</div>
+			</div>
+			<button formaction="" class="button">ดูรายละเอียด</button>
+		</div>
+	</div>
+
+	<div id= "สระแก้ว" class="tabcontent">
+		<h2>สถานที่ท่องเที่ยวแนะนำในสระแก้ว</h2>
+		<div class="row">
+			<div class="column">
+				<div class="card">
+					<h3>Card 1</h3>
+					<p>Some text</p>
+					<p>Some text</p>
+				</div>
+			</div>
+			<button formaction="" class="button">ดูรายละเอียด</button>
+		</div>
+	</div>
+
+	<div id= "สระบุรี" class="tabcontent">
+		<h2>สถานที่ท่องเที่ยวแนะนำในสระบุรี</h2>
+		<div class="row">
+			<div class="column">
+				<div class="card">
+					<h3>Card 1</h3>
+					<p>Some text</p>
+					<p>Some text</p>
+				</div>
+			</div>
+			<button formaction="" class="button">ดูรายละเอียด</button>
+		</div>
+	</div>
+
+	<div id= "สิงห์บุรี" class="tabcontent">
+		<h2>สถานที่ท่องเที่ยวแนะนำในสิงห์บุรี</h2>
+		<div class="row">
+			<div class="column">
+				<div class="card">
+					<h3>Card 1</h3>
+					<p>Some text</p>
+					<p>Some text</p>
+				</div>
+			</div>
+			<button formaction="" class="button">ดูรายละเอียด</button>
+		</div>
+	</div>
+
+	<div id= "สุโขทัย" class="tabcontent">
+		<h2>สถานที่ท่องเที่ยวแนะนำในสุโขทัย</h2>
+		<div class="row">
+			<div class="column">
+				<div class="card">
+					<h3>Card 1</h3>
+					<p>Some text</p>
+					<p>Some text</p>
+				</div>
+			</div>
+			<button formaction="" class="button">ดูรายละเอียด</button>
+		</div>
+	</div>
+
+	<div id= "สุพรรณบุรี" class="tabcontent">
+		<h2>สถานที่ท่องเที่ยวแนะนำในสุพรรณบุรี</h2>
+		<div class="row">
+			<div class="column">
+				<div class="card">
+					<h3>Card 1</h3>
+					<p>Some text</p>
+					<p>Some text</p>
+				</div>
+			</div>
+			<button formaction="" class="button">ดูรายละเอียด</button>
+		</div>
+	</div>
+
+	<div id= "สุราษฏร์ธานี" class="tabcontent">
+		<h2>สถานที่ท่องเที่ยวแนะนำในสุราษฏร์ธานี</h2>
+		<div class="row">
+			<div class="column">
+				<div class="card">
+					<h3>Card 1</h3>
+					<p>Some text</p>
+					<p>Some text</p>
+				</div>
+			</div>
+			<button formaction="" class="button">ดูรายละเอียด</button>
+		</div>
+	</div>
+
+	<div id= "สุรินทร์" class="tabcontent">
+		<h2>สถานที่ท่องเที่ยวแนะนำในสุรินทร์</h2>
+		<div class="row">
+			<div class="column">
+				<div class="card">
+					<h3>Card 1</h3>
+					<p>Some text</p>
+					<p>Some text</p>
+				</div>
+			</div>
+			<button formaction="" class="button">ดูรายละเอียด</button>
+		</div>
+	</div>
+
+	<div id= "หนองคาย" class="tabcontent">
+		<h2>สถานที่ท่องเที่ยวแนะนำในหนองคาย</h2>
+		<div class="row">
+			<div class="column">
+				<div class="card">
+					<h3>Card 1</h3>
+					<p>Some text</p>
+					<p>Some text</p>
+				</div>
+			</div>
+			<button formaction="" class="button">ดูรายละเอียด</button>
+		</div>
+	</div>
+
+	<div id= "หนองบัวลำภู" class="tabcontent">
+		<h2>สถานที่ท่องเที่ยวแนะนำในหนองบัวลำภู</h2>
+		<div class="row">
+			<div class="column">
+				<div class="card">
+					<h3>Card 1</h3>
+					<p>Some text</p>
+					<p>Some text</p>
+				</div>
+			</div>
+			<button formaction="" class="button">ดูรายละเอียด</button>
+		</div>
+	</div>
+
+	<div id= "อ่างทอง" class="tabcontent">
+		<h2>สถานที่ท่องเที่ยวแนะนำในอ่างทอง</h2>
+		<div class="row">
+			<div class="column">
+				<div class="card">
+					<h3>Card 1</h3>
+					<p>Some text</p>
+					<p>Some text</p>
+				</div>
+			</div>
+			<button formaction="" class="button">ดูรายละเอียด</button>
+		</div>
+	</div>
+
+	<div id= "อุดรธานี" class="tabcontent">
+		<h2>สถานที่ท่องเที่ยวแนะนำในอุดรธานี</h2>
+		<div class="row">
+			<div class="column">
+				<div class="card">
+					<h3>Card 1</h3>
+					<p>Some text</p>
+					<p>Some text</p>
+				</div>
+			</div>
+			<button formaction="" class="button">ดูรายละเอียด</button>
+		</div>
+	</div>
+
+	<div id= "อุตรดิตถ์" class="tabcontent">
+		<h2>สถานที่ท่องเที่ยวแนะนำในอุตรดิตถ์</h2>
+		<div class="row">
+			<div class="column">
+				<div class="card">
+					<h3>Card 1</h3>
+					<p>Some text</p>
+					<p>Some text</p>
+				</div>
+			</div>
+			<button formaction="" class="button">ดูรายละเอียด</button>
+		</div>
+	</div>
+
+	<div id= "อุบลราชธานี" class="tabcontent">
+		<h2>สถานที่ท่องเที่ยวแนะนำในอุบลราชธานี</h2>
+		<div class="row">
+			<div class="column">
+				<div class="card">
+					<h3>Card 1</h3>
+					<p>Some text</p>
+					<p>Some text</p>
+				</div>
+			</div>
+			<button formaction="" class="button">ดูรายละเอียด</button>
+		</div>
+	</div>
+
+	<div id= "อำนาจเจริญ" class="tabcontent">
+		<h2>สถานที่ท่องเที่ยวแนะนำในอำนาจเจริญ</h2>
+		<div class="row">
+			<div class="column">
+				<div class="card">
+					<h3>Card 1</h3>
+					<p>Some text</p>
+					<p>Some text</p>
+				</div>
+			</div>
+			<button formaction="" class="button">ดูรายละเอียด</button>
+		</div>
+	</div>
+
+	<script>
+	 	function openCity(evt, cityName) {
+		var i, tabcontent, tablinks;
+		tabcontent = document.getElementsByClassName("tabcontent");
+		for (i = 0; i < tabcontent.length; i++) {
+		  tabcontent[i].style.display = "none";
+		}
+		tablinks = document.getElementsByClassName("tablinks");
+		for (i = 0; i < tablinks.length; i++) {
+		  tablinks[i].className = tablinks[i].className.replace(" active", "");
+		}
+		document.getElementById(cityName).style.display = "block";
+		evt.currentTarget.className += " active";
+	}
+	  
+	  // Get the element with id="defaultOpen" and click on it
+	  document.getElementById("defaultOpen").click();
+
+	  /* When the user clicks on the button, toggle between hiding and showing the dropdown content */
+	function myFunction() {
+  		document.getElementById("myDropdown").classList.toggle("show");
+	}
+
+	function myFunction2() {
+  		document.getElementById("myDropdown2").classList.toggle("show");
+	}
+
+	function filterFunction() {
+  		var input, filter, ul, li, a, i;
+  		input = document.getElementById("myInput");
+  		filter = input.value.toUpperCase();
+  		div = document.getElementById("myDropdown");
+  		a = div.getElementsByTagName("a");
+
+  		for (i = 0; i < a.length; i++) {
+    		txtValue = a[i].textContent || a[i].innerText;
+    		if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      		a[i].style.display = "";
+    		} else {
+      			a[i].style.display = "none";
+    		}
+  		}
+	}
+	</script>
+	
+</body>
+</head>
+</html>
